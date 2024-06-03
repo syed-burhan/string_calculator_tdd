@@ -4,12 +4,16 @@ class StringCalculator
 
         if numbers.start_with?("//")
             delimiter, numbers = numbers.split("\n", 2)
-            binding.pry
             delimiter = delimiter[2..-1]
         else
             delimiter = /,|\n/
         end
 
-        numbers.split(delimiter).map(&:to_i).sum
+        numbers_list = numbers.split(delimiter).map(&:to_i)
+
+        negetives = numbers_list.select { |n| n < 0 }
+        raise "Negetive numbers not allowed: #{negetives.join(', ')}" if negetives.any?
+
+        numbers_list.sum
     end
 end

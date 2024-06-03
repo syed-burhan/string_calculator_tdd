@@ -23,4 +23,8 @@ RSpec.describe StringCalculator do
     it 'does not return incorrect sum' do
         expect(StringCalculator.add("1,2,3")).not_to eq(10)
     end
+
+    it 'handles new lines between numbers' do
+        expect(StringCalculator.add("1\n2,3")).to eq(6)
+    end
 end

@@ -35,8 +35,20 @@ RSpec.describe StringCalculator do
             expect(StringCalculator.add("1\n2,3")).to eq(6)
         end
 
+        it 'handles space between numbers' do
+            expect(StringCalculator.add("1 2 3")).to eq(6)
+        end
+
         it 'support different delimiters' do
             expect(StringCalculator.add("//;\n1;2")).to eq(3)
+        end
+
+        it 'support different delimiters without new line' do
+            expect(StringCalculator.add("//;1;2")).to eq(3)
+        end
+
+        it 'support multiple different delimiters' do
+            expect(StringCalculator.add("1\n2,3;4")).to eq(10)
         end
 
         it 'raise an exception for negetive number' do

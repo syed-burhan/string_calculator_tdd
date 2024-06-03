@@ -23,6 +23,14 @@ RSpec.describe StringCalculator do
             expect(StringCalculator.add("1,2,3")).not_to eq(10)
         end
 
+        it 'returns 0 for a nil value' do
+            expect(StringCalculator.add(nil)).to eq(0)
+        end
+
+        it 'returns the number itself for a single digit' do
+            expect(StringCalculator.add(100)).to eq(100)
+        end
+
         it 'handles new lines between numbers' do
             expect(StringCalculator.add("1\n2,3")).to eq(6)
         end

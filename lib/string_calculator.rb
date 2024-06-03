@@ -1,6 +1,7 @@
 class StringCalculator
     def self.add(numbers)
-        return 0 if numbers.empty?
+        return 0 if numbers.nil? || numbers.to_s.empty?
+        return numbers.to_i if numbers.is_a?(Integer)
 
         if numbers.start_with?("//")
             delimiter, numbers = numbers.split("\n", 2)
